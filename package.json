@@ -10,7 +10,9 @@
     "security-check": "nsp check",
     "lint": "esw webpack.config.* src build bin --color",
     "lint:watch": "npm run lint -- --watch",
-    "start": "npm-run-all --parallel build:live security-check lint:watch",
+    "unittest": "mocha --reporter progress build/unitTestSetup.js \"src/**/*.test.js\"",
+    "test:watch": "npm run unittest -- --watch",
+    "start": "npm-run-all --parallel build:live security-check lint:watch test:watch",
     "build": "",
     "localtunnel": "lt --port 3000 --subdomain backstage",
     "share": "npm-run-all --parallel dev-start localtunnel"
@@ -47,6 +49,7 @@
     "json-server": "^0.10.0",
     "localtunnel": "^1.8.2",
     "mocha": "^3.3.0",
+    "mocha-jsdom": "^1.1.0",
     "nock": "^9.0.13",
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
